@@ -1,0 +1,19 @@
+<!-- %-include("header");%> SINCE NOW ITS INSIDE PARTIALS IT WONT WORK-->
+<%-include("PARTIALS/header"); %>
+
+    <h1>Compose</h1>
+
+    <div class="userinp" style="width: max-content; margin-bottom: 50px;">
+        <form action="/compose" method="post">
+         
+         <div class="form-group">  <label for="text">Title</label>
+            <input required type="text" name="userInpTitle" value="" class="form-control"> </div> 
+
+           <div class="form-group"> <label for="textarea">Post</label>
+            <textarea required class="form-control" name="userInpDescription"  rows="10" cols="70" minlength="1" maxlength="5000" id=""></textarea>
+        </div>
+            <button class="btn btn-primary" type="submit" name="button">PUBLISH</button>
+        </form>
+    </div>
+    <!--%-include("footer");%> SINCE NOW ITS INSIDE PARTIALS IT WONT WORK-->
+<%-include("PARTIALS/footer"); %>

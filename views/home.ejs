@@ -1,0 +1,52 @@
+<!-- %-include("header");%> SINCE NOW ITS INSIDE PARTIALS IT WONT WORK-->
+<%-include("PARTIALS/header"); %>
+
+    <h1>Welcome to Daily Journal</h1>
+    <p><%=homeStartingContent%></p>
+
+    <div onclick="window.location='/compose'" class="composeIcon">Compose</div>
+    
+   
+        <% if(locals.postArr) {%>
+
+      <div>
+         <% postArr.forEach(element => { %>
+            <div class="post" id="<%= element.id %>"> 
+                <h2 class="title"><%=element.title%></h2> <p class="description">
+                    <%if(element.description.length>100){%>
+                    <%element.description=element.description.slice(0,101);%>
+                    <%=element.description%>
+                    <span class="ReadMore">...read more</span>
+
+                    <%}else{%>
+                        <%=element.description%>
+                        <%}%>
+                </p>
+            </div>
+         <% }) %>
+      </div>
+            
+    <script>
+        Array.from(document.querySelectorAll(".post")).forEach((p)=>{
+            p.addEventListener("click", async (e) => {
+            if (typeof e !== 'undefined' && e.target.classList.contains("title") || e.target.classList.contains("ReadMore")) {
+                // alert(e.target.parentElement.id)
+                if(e.target.classList.contains("ReadMore")){
+                    window.location=`/posts/${e.target.parentElement.parentElement.id}`;
+                    return;
+                }
+                window.location=`/posts/${e.target.parentElement.id}`;
+            }
+          });
+        })
+    </script>
+    
+    
+
+         <%}%>
+   
+
+
+    <!--%-include("footer");%> SINCE NOW ITS INSIDE PARTIALS IT WONT WORK-->
+<%-include("PARTIALS/footer"); %>
+

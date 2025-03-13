@@ -1,0 +1,21 @@
+<!-- %-include("header");%> SINCE NOW ITS INSIDE PARTIALS IT WONT WORK-->
+<%-include("PARTIALS/header"); %>
+
+
+    <div onclick="window.location='/compose'" class="composeIcon">Compose</div>
+    
+    <div>
+        <% if(locals.filteredPosts) {%>
+ 
+         <% filteredPosts.forEach(element => { %>
+            <div class="post" id="<%= element.id %>"> 
+                <h2 class="title"><%=element.title%></h2> <p class="description"><%=element.description%></p>
+            </div>
+         <% }) %>
+ 
+         <%}%>
+    </div>
+
+
+    <!--%-include("footer");%> SINCE NOW ITS INSIDE PARTIALS IT WONT WORK-->
+<%-include("PARTIALS/footer"); %>
